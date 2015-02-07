@@ -55,8 +55,10 @@
 (defun jslime-send-buffer-and-go ()
   "Send the buffer to the inferior Javascript process."
   (interactive)
-  (jslime-restart-nodjs-repl)
-  (jslime-send-region-and-go (point-min) (point-max)))
+  (let ((buf (current-buffer)))
+    (jslime-restart-nodjs-repl)
+    (with-current-buffer buf
+      (jslime-send-region-and-go (point-min) (point-max)))))
 
 
 ;; ;;;###autoload
