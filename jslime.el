@@ -24,12 +24,14 @@
                               "\\2\\1"
                               (buffer-substring-no-properties start end))))
 
+;;;###autoload
 (defun jslime-send-region (start end)
   "Send the current region to the inferior Javascript process."
   (interactive "r")
   (comint-send-string jslime-repl-buffer
                       (concat (jslime--clean-region start end) "\n")))
 
+;;;###autoload
 (defun jslime-send-last-sexp ()
   "Send the previous sexp to the inferior Javascript process."
   (interactive)
@@ -123,7 +125,6 @@ With argument, position cursor at end of buffer."
     m))
 
 
-;;;###autoload
 (define-minor-mode jslime-mode
   "Minor mode for interacting with a nodejs."
   :lighter " jslime"
